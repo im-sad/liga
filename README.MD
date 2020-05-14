@@ -1,14 +1,7 @@
 ### INIT
-install packages
 
-    $ yarn
+    `$ npm`
 
-start development
+### Development
 
-    $ yarn start
-
-### Structure
-style/system - базовые стили, шрифты и настройки
-
-### DEPLOY
-`surge --domain -.surge.sh`
+    `$ npm start`
