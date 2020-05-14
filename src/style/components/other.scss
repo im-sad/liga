@@ -8,6 +8,11 @@ svg.icn {
   display: inline-block;
   fill: currentColor;
   user-select: none;
+
+  &--arrow {
+    width: 7px;
+    height: 12px;
+  }
 }
 
 .nowrap {

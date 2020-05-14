@@ -5,21 +5,14 @@
       <div class="page__sort my-select" id="my-select">
         <div class="my-select__placeholder" data-placeholder>&uarr; По площади</div>
         <ul class="my-select__list">
-          <li class="my-select__item">&uarr; По площади</li>
-          <li class="my-select__item">&darr; По цене</li>
-          <li class="my-select__item">&uarr; По площади</li>
-          <li class="my-select__item">&uarr; По цене</li>
+          <li class="my-select__item"><svg class="icn icn--arrow"><use xlink:href="#icn-up"/></svg> По площади</li>
+          <li class="my-select__item"><svg class="icn icn--arrow"><use xlink:href="#icn-down"/></svg> По площади</li>
+          <li class="my-select__item"><svg class="icn icn--arrow"><use xlink:href="#icn-up"/></svg> По цене</li>
+          <li class="my-select__item"><svg class="icn icn--arrow"><use xlink:href="#icn-down"/></svg> По цене</li>
         </ul>
       </div>
     </div>
 
-
-  <!-- <select id="my-select" name="tex">
-    <option class="test" value="0">&uarr; По площади</option>
-    <option class="test" value="1">&darr; По площади</option>
-    <option class="test" value="2">&uarr; По цене</option>
-    <option class="test" value="3">&darr; По цене</option>
-  </select> -->
     <div class="page__wrapper">
       @@include('./sidebar.html')
       @@include('./items.html')
