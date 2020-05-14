@@ -1,7 +1,6 @@
 <aside class="page__sidebar sidebar">
   <input type="checkbox" id="show-filters">
-  <label for="show-filters" class="show-filter">Показать фильтры</label>
-  
+  <label for="show-filters" class="show-filter">Фильтры</label>
 
   <form class="sidebar__search search-form" action="#">
     <fieldset class="search-form__fieldset search-form__fieldset--prices">
@@ -9,11 +8,11 @@
       <ul class="search-form__prices price-limit">
         <li class="price-limit__item">
           <label class="price-limit__label">от</label>
-          <input class="price-limit__input input input--fluid" type="number" value="100" min="100">
+          <input class="price-limit__input input input--fluid" type="number" value="100" min="100" step="100" max="1000">
         </li>
         <li class="price-limit__item">
           <label class="price-limit__label">до</label>
-          <input class="price-limit__input input input--fluid" type="number" value="100" min="100">
+          <input class="price-limit__input input input--fluid" type="number" value="600" min="100" step="100" max="1000">
         </li>
       </ul>
     </fieldset>
