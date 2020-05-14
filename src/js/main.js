@@ -58,47 +58,46 @@ document.addEventListener('DOMContentLoaded', function() {
   // Select fake
   (function() {
     const selectElement = document.querySelector('#my-select');
+    MySelect(selectElement);
+  })();
 
-    if (!selectElement) return;
+  function MySelect(el) {
+    if (!el) return;
 
     const selectPlaceholder = document.querySelector('[data-placeholder]');
-    const list = selectElement.getElementsByTagName('ul');
-    const items = selectElement.getElementsByTagName('li');
+    const selectList = el.getElementsByTagName('ul');
+    const selectItems = el.getElementsByTagName('li');
 
+    el.style.width = selectList[0].offsetWidth + 'px';
 
-    selectElement.style.width = list[0].offsetWidth + 'px';
-
-    selectPlaceholder.addEventListener('click', function() {
-
-        if (selectElement.classList.contains('is-opended')) {
-        document.removeEventListener('click', searchClick);
+    selectPlaceholder.addEventListener('click', function(e) {
+      if (el.classList.contains('is-opended')) {
+        document.removeEventListener('click', clickOutside);
       } else {
-        document.addEventListener('click', searchClick);
+        document.addEventListener('click', clickOutside);
       }
-      selectElement.classList.toggle('is-opended');
-
+      el.classList.toggle('is-opended');
     });
 
-    for (let i = 0; i < items.length; i++) {
-      items[i].addEventListener('click', function() {
-        let val = this.innerHTML;
-        selectElement.classList.remove('is-opended');
-        selectPlaceholder.innerHTML = val;
+    for (let i = 0; i < selectItems.length; i++) {
+      selectItems[i].addEventListener('click', function() {
+        let content = this.innerHTML;
+        el.classList.remove('is-opended');
+        selectPlaceholder.innerHTML = content;
       })
     }
 
-
-    function searchClick(e) {
+    function clickOutside(e) {
       let targetElement = e.target;
       do {
-        if (targetElement == selectElement) return;
+        if (targetElement == el) return;
 
         targetElement = targetElement.parentNode;
       } while (targetElement);
 
-      document.removeEventListener('click', searchClick);
-      selectElement.classList.remove('is-opended');
+      document.removeEventListener('click', clickOutside);
+      el.classList.remove('is-opended');
     }
-  })();
+  }
 
 });
