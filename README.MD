@@ -1,7 +1,7 @@
 ### INIT
 
-    `$ npm`
+`$ npm`
 
 ### Development
 
-    `$ npm start`
+`$ npm start`
