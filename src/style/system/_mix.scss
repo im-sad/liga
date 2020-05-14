@@ -1,0 +1,23 @@
+// Mixins
+@mixin font-size($fontSize, $fontInterliase) {
+  font-size: $fontSize;
+  line-height: $fontInterliase / $fontSize;
+}
+
+@mixin better-fonts() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Styles
+@mixin style-title-h1() {
+  font-family: $font-sub;
+  font-weight: 700;
+  @include font-size(36px, 43px);
+}
+
+@mixin style-title-h2() {
+  font-family: $font-sub;
+  font-weight: 500;
+  @include font-size(20px, 24px);
+}

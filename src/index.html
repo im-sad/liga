@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Демонстрационный котейка</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" href="css/main.css">
+
+<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+
+
+<body class="body">
+<noscript><div class="c">Для полноценной работы сайта, необходимо включить JavaScript!</div></noscript>
+
+<script>
+(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'img/sprite.svg', true);
+  xhr.send();
+  xhr.onload = function() {
+    var div = document.createElement('div');
+    div.innerHTML = xhr.responseText;
+    document.body.insertBefore(div, document.body.childNodes[0]);
+  }
+})();
+</script>
+
+
+@@include('tpl/inc/header.html')
+@@include('tpl/inc/page.html')
+
+<script src="js/main.js"></script>
+</body>
+</html>

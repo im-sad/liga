@@ -1,0 +1,204 @@
+// INPUT
+.input {
+  box-sizing: border-box;
+  transition: border 0.3s, box-shadow 0.3s;
+  outline: none !important;
+  line-height: $form-line-height;
+  vertical-align: middle;
+  border: 1px solid $color-border;
+
+  &:hover {
+    border-color: darken($color-border, 20%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px lighten($color-accent, 20%);
+  }
+
+  // mods
+  &--fluid {
+    width: 100%;
+  }
+}
+
+// CHECKBOX
+$control-size: 20px;
+
+.checkbox {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: $control-size;
+
+  &__title {
+    padding-left: ($control-size + 10px);
+    display: inline-block;
+    vertical-align: top;
+    user-select: none;
+  }
+
+  &__title:empty {
+    padding-left: $control-size;
+  }
+
+  &__title::before,
+  &__title::after {
+    content: '';
+    position: absolute;
+  }
+
+  input {
+    vertical-align: top;
+    margin: 0 3px 0 0;
+    width: 17px;
+    height: 17px;
+  }
+
+  input:not(checked) {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
+
+.checkbox {
+  &__title::before {
+    width: $control-size;
+    height: $control-size;
+    background: $color-white;
+    left: 0;
+    top: 0;
+    border: 1px solid $color-border;
+    transition: all 0.3s ease;
+  }
+
+  &__title::after {
+    width: $control-size;
+    height: $control-size;
+    background: url("data:image/svg+xml,%3Csvg width='11' height='8' viewBox='0 0 11 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.25L4.46154 7L10 1' stroke='%23141312' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background-size: 12px 9px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.3s ease, transform 0.2s ease;
+  }
+
+  // disabled
+  input:disabled ~ &__title {
+    cursor: default;
+
+    &::before {
+      opacity: 0.7;
+      filter: grayscale(1);
+    }
+  }
+
+  // checked
+  input:checked ~ &__title::before {
+    background: $color-white;
+  }
+
+  input:checked ~ &__title::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // hover
+  &:hover input:not(:checked) ~ &__title:before {
+    border-color: darken($color-border, 20%);
+  }
+
+  &:hover input:checked + &__title:before {
+    border-color: darken($color-border, 20%);
+  }
+
+  // focus
+  & input:focus + &__title:before {
+    box-shadow: 0 0 0 2px lighten($color-accent, 20%);
+  }
+}
+
+
+// Select
+.my-select {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: $z-select;
+  background: $color-white;
+  white-space: nowrap;
+  user-select: none;
+
+
+  &__placeholder {
+    position: relative;
+    background: $color-white;
+    color: $color-text;
+    box-shadow: 0 2px 12px rgba(173, 152, 143, 0.18);
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 12px (20px * 2 + 12) 12px 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+
+    &::before {
+      content: '';
+      background: url('data:image/svg+xml,%3Csvg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M13 7L7 1L1 7" stroke="%231A212F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E%0A') no-repeat center center;
+      background-size: contain;
+      width: 13px;
+      height: 7px;
+      position: absolute;
+      right: 20px;
+      margin-top: -3px;
+      top: 50%;
+      transform: rotate(180deg);
+      z-index: 1;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      box-shadow: 0 2px 12px rgba(173, 152, 143, 0.4);
+    }
+  }
+
+  &.is-opended &__placeholder::before {
+    transform: rotate(0);
+  }
+
+  &.is-opended &__list {
+        visibility: visible;
+    opacity: 1;
+  }
+
+  &__list {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $color-white;
+    color: $color-text;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 2px 12px rgba(173, 152, 143, 0.18);
+    border-radius: 4px;
+  }
+
+  &__item {
+    padding: 12px (20px * 2 + 12) 12px 20px;
+    @include font-size(14px, 14px);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

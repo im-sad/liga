@@ -1,0 +1,168 @@
+.sidebar {
+  position: relative;
+
+  &__search {
+    position: sticky;
+    top: $header-height + 20px;
+    left: 0;
+
+    //TODO: check media height
+  }
+
+
+  @include respond-to(tablet) {
+    &__search {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    #show-filters:checked ~ &__search {
+      padding-bottom: 30px;
+      max-height: 1000px;
+    }
+  }
+}
+
+// Mob filters
+.show-filter {
+  display: none;
+  border-radius: 3px;
+  background: $color-white;
+  cursor: pointer;
+  border: 1px solid $color-border;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 12px;
+  font-weight: 700;
+
+  @include respond-to(tablet) {
+    display: block;
+  }
+}
+
+#show-filters {
+  display: none;
+  visibility: hidden;
+}
+
+
+.search-form {
+  &__fieldset {
+    padding: 0;
+    bottom: 0;
+
+    & + & {
+      margin-top: 35px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0 0 20px;
+    @include font-size(16px, 16px);
+    font-weight: 500;
+    cursor: default;
+  }
+
+  &__list-item {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    max-width: 185px;
+    margin-top: 35px;
+  }
+
+  &__btn {
+    & + & {
+      margin-top: 11px;
+    }
+  }
+
+  @include respond-to(tablet) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    &__fieldset {
+      & + & {
+        margin-top: 10px;
+      }
+
+      &--prices {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      &--s,
+      &--params {
+        width: 50%;
+      }
+    }
+
+    &__buttons {
+      width: 100%;
+      max-width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @include respond-to(mobile) {
+    display: block;
+  }
+}
+
+
+.price-limit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__item {
+    position: relative;
+    width: 100px;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  &__input {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 25px;
+    padding-right: 10px;
+  }
+
+  @include respond-to(tablet) {
+    flex-wrap: nowrap;
+
+    &__item {
+      width: 50%;
+    }
+  }
+}
+

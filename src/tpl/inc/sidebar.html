@@ -1,0 +1,105 @@
+<aside class="page__sidebar sidebar">
+  <input type="checkbox" id="show-filters">
+  <label for="show-filters" class="show-filter">Показать фильтры</label>
+  
+
+  <form class="sidebar__search search-form" action="#">
+    <fieldset class="search-form__fieldset search-form__fieldset--prices">
+      <legend class="search-form__title">Цена за сутки, ₽</legend>
+      <ul class="search-form__prices price-limit">
+        <li class="price-limit__item">
+          <label class="price-limit__label">от</label>
+          <input class="price-limit__input input input--fluid" type="number" value="100" min="100">
+        </li>
+        <li class="price-limit__item">
+          <label class="price-limit__label">до</label>
+          <input class="price-limit__input input input--fluid" type="number" value="100" min="100">
+        </li>
+      </ul>
+    </fieldset>
+
+    <fieldset class="search-form__fieldset search-form__fieldset--s">
+      <legend class="search-form__title">Площадь</legend>
+      <ul class="search-form__list">
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="0.63">
+            <span class="checkbox__title">0,63 м2</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="0.90">
+            <span class="checkbox__title">0,90 м2</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="1.13">
+            <span class="checkbox__title">1,13 м2</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="1.56">
+            <span class="checkbox__title">1,56 м2</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="2.56">
+            <span class="checkbox__title">2,56 м2</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="3.56">
+            <span class="checkbox__title">3,56 м2</span>
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+
+    <fieldset class="search-form__fieldset search-form__fieldset--params">
+      <legend class="search-form__title">Оснащение номера</legend>
+      <ul class="search-form__list">
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="0.63">
+            <span class="checkbox__title">Пустой номер</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="0.90">
+            <span class="checkbox__title">Лежак</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="1.13">
+            <span class="checkbox__title">Когтеточка</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="1.56">
+            <span class="checkbox__title">Игровой-комплекс</span>
+          </label>
+        </li>
+        <li class="search-form__list-item">
+          <label class="checkbox">
+            <input type="checkbox" value="2.56">
+            <span class="checkbox__title">Домик</span>
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+
+    <div class="search-form__buttons">
+      <button type="submit" role="button" class="search-form__btn btn-accent btn btn--size-base">Применить</button>
+      <button type="reset" role="button" class="search-form__btn btn-hollow btn btn--size-base">Сбросить фильтр</button>
+    </div>
+
+  </form>
+</aside>

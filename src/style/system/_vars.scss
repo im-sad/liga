@@ -1,0 +1,62 @@
+// Base
+$w: 1204px;
+$bg: #fff;
+$img: '../img';
+$fonts: '../fonts';
+$header-height: 76px;
+
+// Colors
+$color-white: #fff;
+$color-black: #000;
+$color-main: #F05B1B;
+$color-main-hover: #FF7236;
+$color-accent: #FAC663;
+$color-muted: #777;
+$color-border: #E1E1E1;
+
+// Colors-text
+$color-text: #1A212F;
+$color-link: $color-main;
+$color-link-hover: $color-main-hover;
+
+// Fonts options
+$font: 'Lato', Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+$font-sub: 'Rubik', 'Trebuchet MS', 'Helvetica CY', sans-serif;
+$font-base: 62.5%;
+$font-size: 14px;
+$line-height: 1.5;
+
+$btn-line-heigh: 1.25;
+$form-line-height: 1.25;
+
+
+// Z-index
+$z-header: 99;
+$z-menu: $z-header + 1;
+$z-burger: $z-header + 2;
+$z-select: 9;
+
+// Media
+$media-default: 1024px;
+$media-laptop: 960px;
+$media-tablet: 600px;
+$media-mobile: 480px;
+
+
+@mixin respond-to($media) {
+  @if $media == default {
+    @media only screen and (max-width: $media-default + 1px) { @content; }
+  }
+  @else if $media == laptop {
+    @media only screen and (max-width: $media-laptop) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (max-width: $media-tablet) { @content; }
+  }
+  @else if $media == tablet-min {
+    @media only screen and (min-width: $media-tablet + 1) { @content; }
+  }
+  @else if $media == mobile {
+    @media only screen and (max-width: $media-mobile + 1) { @content; }
+  }
+}

@@ -1,0 +1,15 @@
+.title-h1 {
+  @include style-title-h1;
+  cursor: default;
+  clear: both;
+}
+
+svg.icn {
+  display: inline-block;
+  fill: currentColor;
+  user-select: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

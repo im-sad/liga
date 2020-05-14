@@ -1,0 +1,259 @@
+.header {
+  position: fixed;
+  z-index: $z-header;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $color-white;
+  transition: background 0.1s linear, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 rgba($color-black, 0.001);
+
+  &.is-sticky {
+    box-shadow: 0 2px 20px rgba($color-black, 0.1);
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $header-height;
+  }
+
+  &__logo {
+    flex: 0 0 auto;
+    margin-right: auto;
+  }
+
+
+  &__menu {
+    margin-right: 30px;
+  }
+
+
+  @include respond-to(default) {
+    &__menu {
+      margin-right: 0;
+    }
+  }
+
+  @include respond-to(tablet-min) {
+    &__burger {
+      display: none !important;
+    }
+  }
+
+  @include respond-to(tablet) {
+    &__menu {
+      visibility: hidden;
+      opacity: 0;
+      z-index: $z-menu;
+    }
+
+    &__burger {
+      z-index: $z-burger;
+    }
+  }
+}
+
+.logotype {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  user-select: none;
+
+  &:hover &__cat-eye {
+    display: none;
+  }
+
+  &:active {
+    bottom: -1px;
+  }
+
+  &__cat {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+  }
+
+  &__cat-eye {
+    transition: all 0.1s ease;
+    animation: eye-blink 5s linear infinite;
+    animation-delay: 0.5s;
+  }
+
+  &__cat-mounth {
+    transform: translateY(-1px);
+    animation: mounth-move 1s linear infinite alternate;
+  }
+}
+
+
+.header-menu {
+  user-select: none;
+  transition: opacity 0.4s ease;
+
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__item {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    @include font-size(16px, 19px);
+    color: $color-text;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border 0.2s ease;
+
+    &:hover {
+      color: $color-text;
+      border-bottom-color: currentColor;
+    }
+  }
+
+  @include respond-to(tablet) {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    background: $color-white;
+
+    &.has-active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &__list {
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    &__item {
+      width: 100%;
+      text-align: center;
+      margin-right: 0;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    &__link {
+      padding: 10px 0;
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+}
+
+.burger {
+  cursor: pointer;
+  height: 20px;
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  color: $color-text;
+
+  &:active {
+    color: $color-main;
+  }
+
+  &__strips {
+    top: 50%;
+    margin-top: -1px;
+
+    &,
+    &::before,
+    &::after {
+      background: currentColor;
+      cursor: pointer;
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      display: block;
+      transition: top 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+    }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
+  }
+
+  &:hover &__strips::before {
+    top: -7px;
+  }
+
+  &:hover &__strips::after {
+    bottom: -7px;
+  }
+
+  &.has-active &__strips {
+    background-color: transparent;
+
+    &::before,
+    &::after {
+      top: 0;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+
+@keyframes eye-blink {
+  0%,
+  5%,
+  10%,
+  18%,
+  100% {
+    opacity: 1;
+  }
+
+  1%,
+  9% {
+    opacity: 0;
+  }
+}
+
+@keyframes mounth-move {
+  from {
+    transform: translateY(1px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
