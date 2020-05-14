@@ -10,6 +10,11 @@
   padding-right: 20px;
   width: 100%;
   flex: 0 0 auto;
+
+  @include respond-to(mobile) {
+    padding-left: 22px;
+    padding-right: 12px;
+  }
 }
 
 .nojs {

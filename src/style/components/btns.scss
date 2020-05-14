@@ -15,16 +15,22 @@
   position: relative;
   bottom: 0;
   box-sizing: border-box;
-  border: 1px solid transparent; //1px border для равной с .field высоты
+  border: 1px solid transparent;
   max-width: 100%;
   opacity: 1;
   text-overflow: ellipsis;
 
 
-	//state
-	&:hover:not(.no-hover), &--hover {text-decoration:none;cursor:pointer;}
-	&:active, &--active {}
-	&:disabled, &--disabled {cursor:default;opacity:.7;}
+  //state
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
 
   // mod
   &--fluid {
@@ -69,7 +75,6 @@
   &:active {
     bottom: -2px;
   }
-
 
   &::before {
     content: '';
