@@ -2,17 +2,17 @@
   <input type="checkbox" id="show-filters">
   <label for="show-filters" class="show-filter">Фильтры</label>
 
-  <form class="sidebar__search search-form" action="#">
+  <form class="sidebar__search search-form" action="#" id="js-filter-form">
     <fieldset class="search-form__fieldset search-form__fieldset--prices">
       <legend class="search-form__title">Цена за сутки, ₽</legend>
       <ul class="search-form__prices price-limit">
         <li class="price-limit__item">
           <label class="price-limit__label">от</label>
-          <input class="price-limit__input input input--fluid" type="number" value="100" min="100" step="100" max="1000">
+          <input class="price-limit__input input input--fluid" type="number" name="price_from" value="100" min="100" step="100" max="1000">
         </li>
         <li class="price-limit__item">
           <label class="price-limit__label">до</label>
-          <input class="price-limit__input input input--fluid" type="number" value="600" min="100" step="100" max="1000">
+          <input class="price-limit__input input input--fluid" type="number" name="price_to" value="600" min="100" step="100" max="1000">
         </li>
       </ul>
     </fieldset>
@@ -22,38 +22,38 @@
       <ul class="search-form__list">
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="0.63">
+            <input type="checkbox" value="0.63" name="area">
             <span class="checkbox__title">0,63 м2</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="0.90">
+            <input type="checkbox" value="0.90" name="area">
             <span class="checkbox__title">0,90 м2</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="1.13">
+            <input type="checkbox" value="1.13" name="area">
             <span class="checkbox__title">1,13 м2</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="1.56">
+            <input type="checkbox" value="1.56" name="area">
             <span class="checkbox__title">1,56 м2</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="2.56">
+            <input type="checkbox" value="2.56" name="area">
             <span class="checkbox__title">2,56 м2</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="3.56">
-            <span class="checkbox__title">3,56 м2</span>
+            <input type="checkbox" value="2.88" name="area">
+            <span class="checkbox__title">2,88 м2</span>
           </label>
         </li>
       </ul>
@@ -64,31 +64,31 @@
       <ul class="search-form__list">
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="0.63">
+            <input type="checkbox" value="empty" name="params">
             <span class="checkbox__title">Пустой номер</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="0.90">
+            <input type="checkbox" value="sunbed" name="params">
             <span class="checkbox__title">Лежак</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="1.13">
+            <input type="checkbox" value="clawpoint" name="params">
             <span class="checkbox__title">Когтеточка</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="1.56">
+            <input type="checkbox" value="catgame" name="params">
             <span class="checkbox__title">Игровой-комплекс</span>
           </label>
         </li>
         <li class="search-form__list-item">
           <label class="checkbox">
-            <input type="checkbox" value="2.56">
+            <input type="checkbox" value="house" name="params">
             <span class="checkbox__title">Домик</span>
           </label>
         </li>

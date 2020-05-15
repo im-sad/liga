@@ -54,6 +54,85 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   })();
 
+  // Filter form
+  (function() {
+    const form = document.getElementById('js-filter-form');
+
+    if (!form) return;
+
+    const areaInputs = form.querySelectorAll('input[name="area"]');
+    const featuresInputs = form.querySelectorAll('input[name="params"]');
+    const roomsListItems = document.getElementById('js-rooms').getElementsByClassName('room-card');
+    const formResetBtn = form.querySelector('button[type="reset"]');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Вы всё сломали');
+    });
+
+    formResetBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      form.reset();
+      updateContent();
+    });
+
+    areaInputs.forEach((input) => {
+      input.addEventListener('input', updateContent);
+    });
+
+    featuresInputs.forEach((input) => {
+      input.addEventListener('input', updateContent);
+    });
+
+
+    function getInputsParams(fields) {
+      let params = [];
+
+      fields.forEach((input) => {
+        if (input.checked) params.push(input.value)
+      });
+
+      return params;
+    }
+
+    function toggleItemsView(items, paramsArea, paramsFeatures) {
+      let isEmpryAreaParams, isEmpryFeaturesParams;
+
+      if (paramsArea.length == 0) isEmpryAreaParams = true;
+      if (paramsFeatures.length == 0) isEmpryFeaturesParams = true;
+
+      for (let i = 0; i < items.length; i++) {
+        const el = items[i];
+        let itemArea = el.dataset.area || undefined;
+        let itemFeatures = el.dataset.features.split(',') || undefined;
+
+        if (isEmpryFeaturesParams && isEmpryAreaParams) {
+          el.style.display = 'block';
+        } else {
+          let isAreaMatch = paramsArea.indexOf(itemArea) == -1  ? false : true;
+          let isFeaturesMatch = paramsFeatures.diff(itemFeatures).length ? false : true;
+          let isElVisible;
+
+          if (isAreaMatch && isEmpryFeaturesParams ||
+              isFeaturesMatch && isEmpryAreaParams ||
+              isAreaMatch && isFeaturesMatch
+          ) {
+            isElVisible = true;
+          }
+
+          isElVisible ? el.style.display = 'block' : el.style.display = 'none';
+        }
+      }
+    }
+
+    function updateContent() {
+      const valuesArea = getInputsParams(areaInputs);
+      const valuesFeatures = getInputsParams(featuresInputs);
+
+      toggleItemsView(roomsListItems, valuesArea, valuesFeatures);
+    }
+  })();
+
 
   // Select fake
   (function() {
@@ -101,3 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 });
+
+
+Array.prototype.diff = function(a) {
+    return this.filter(function(i) {return a.indexOf(i) < 0;});
+};
