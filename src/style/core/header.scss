@@ -61,8 +61,8 @@
   position: relative;
   user-select: none;
 
-  &:hover &__cat-eye {
-    display: none;
+  &:hover &__cat-head {
+    transform: translateY(1px) rotate(-5deg);
   }
 
   &:active {
@@ -75,10 +75,16 @@
     max-width: 100%;
   }
 
+  &__cat-head {
+    transform-origin: 50% 50%;
+    transition: transform 0.1s ease;
+    transform: translateY(1px);
+  }
+
   &__cat-eye {
     transition: all 0.1s ease;
     animation: eye-blink 5s linear infinite;
-    animation-delay: 0.5s;
+    animation-delay: 0.1s;
   }
 
   &__cat-mounth {
@@ -231,7 +237,6 @@
     }
   }
 }
-
 
 @keyframes eye-blink {
   0%,
