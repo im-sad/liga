@@ -63,8 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const areaInputs = form.querySelectorAll('input[name="area"]');
     const featuresInputs = form.querySelectorAll('input[name="params"]');
     const roomsListItems = document.getElementById('js-rooms').getElementsByClassName('room-card');
+    const roomsListItemsNum = roomsListItems.length;
     const formResetBtn = form.querySelector('button[type="reset"]');
+    const sortLinks = document.querySelectorAll('[data-sort]');
 
+    // FILTERS
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Вы всё сломали');
@@ -84,6 +87,68 @@ document.addEventListener('DOMContentLoaded', function() {
       input.addEventListener('input', updateContent);
     });
 
+
+    // SORT
+    sortLinks.forEach((link) => {
+      link.addEventListener('click', function() {
+        sortItems(this.dataset.sort);
+      });
+    })
+
+    function sortItems(type) {
+      const arrPrices = [];
+      const arrArea = [];
+
+      for (let i = 0; i < roomsListItemsNum; i++) {
+        arrPrices.push(roomsListItems[i].dataset.price);
+        arrArea.push(roomsListItems[i].dataset.area);
+      }
+
+      switch(type) {
+        case 'price-max':
+          letsSort(arrPrices, 'price', true);
+          break;
+        case 'price-min':
+          letsSort(arrPrices, 'price', false);
+          break;
+        case 'area-max':
+          letsSort(arrArea, 'area', false);
+          break;
+        case 'area-min':
+          letsSort(arrArea, 'area', true);
+          break;
+        default:
+          letsSort(arrPrices, 'price', true);
+      }
+    }
+
+
+    // FUNCTIONS
+    function letsSort(array, type, reverse) {
+      let arrSorted = getSortedArray(array, reverse);
+
+      for (let i = 0; i < roomsListItemsNum; i++) {
+        setOrder(arrSorted, roomsListItems[i], type);
+      }
+    }
+
+    function getSortedArray(array, reverse) {
+      return (reverse) ? array.sort(compareNumeric) : array.sort(compareNumeric).reverse();
+    }
+
+    function setOrder(array, item, type) {
+      let order;
+      if (type === 'price') order = array.indexOf(item.dataset.price);
+      if (type === 'area') order = array.indexOf(item.dataset.area);
+
+      item.style.order = order;
+    }
+
+    function compareNumeric(a, b) {
+      if (a > b) return 1;
+      if (a == b) return 0;
+      if (a < b) return -1;
+    }
 
     function getInputsParams(fields) {
       let params = [];
