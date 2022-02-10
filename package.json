@@ -34,7 +34,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "imagemin-pngquant": "^4.2.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "run-sequence": "^1.1.5"
   },
   "main": "index.js",
